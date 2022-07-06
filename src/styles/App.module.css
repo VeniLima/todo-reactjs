@@ -15,6 +15,7 @@
 
 .form input {
   background: var(--gray-500);
+  color: white;
   border: 1px solid var(--gray-700);
   border-radius: 8px;
   box-sizing: border-box;
@@ -30,6 +31,11 @@
   flex: none;
   order: 0;
   flex-grow: 1;
+}
+
+.form input:focus-within {
+  border: 1px solid var(--purple);
+  outline: var(--purple);
 }
 
 .form button {
