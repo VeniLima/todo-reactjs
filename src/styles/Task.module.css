@@ -1,13 +1,12 @@
 .task {
   box-sizing: border-box;
 
-  /* Auto layout */
-
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 16px;
+  padding: 1rem;
   gap: 12px;
+  word-wrap: break-word;
 
   width: 736px;
   height: 72px;
@@ -19,24 +18,45 @@
   border-radius: 8px;
 
   margin-top: 0.75rem;
+  overflow: hidden;
 }
+/* -------------------------------------------- */
+.task input[type="checkbox"] {
+  -webkit-appearance: none;
+  background: transparent;
+  border: 2px solid var(--blue);
 
-.checkboxRound {
   width: 17px;
   height: 17px;
   border-radius: 50%;
+  display: flex;
+  align-items: flex-start;
 
-  vertical-align: middle;
-  border: 1px solid var(--blue);
-  appearance: none;
-  -webkit-appearance: none;
-  outline: none;
   cursor: pointer;
 }
-.checkboxRound:checked {
-  appearance: auto;
-  clip-path: circle(50% at 50% 50%);
-  background-color: blue;
+
+.task input[type="checkbox"]:not(:checked):hover {
+  background: var(--blue-dark);
+  opacity: 0.2;
+}
+
+.task input[type="checkbox"]:checked {
+  -webkit-appearance: none;
+
+  background: var(--purple-dark);
+  border: none;
+
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: flex-start;
+
+  cursor: pointer;
+}
+
+.task input[type="checkbox"]:checked:hover {
+  background: var(--purple);
 }
 
 .taskText {
@@ -48,13 +68,28 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
-  /* or 20px */
+  text-transform: lowercase;
 
-  /* Gray 100 */
+  color: var(--gray-100);
+}
 
-  color: #f2f2f2;
+.taskTextLined {
+  width: 632px;
+  height: 40px;
+  margin-top: -0.01rem;
+  align-items: start;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  text-transform: lowercase;
 
-  /* Inside auto layout */
+  color: var(--gray-300);
+  text-decoration: line-through;
+}
+
+.taskText:first-letter {
+  text-transform: uppercase;
 }
 
 .task button {
@@ -64,7 +99,7 @@
 }
 
 .task button:hover {
-  background: var(--gray-300);
+  background: var(--gray-400);
   color: var(--danger);
   border-radius: 8px;
   cursor: pointer;
