@@ -62,7 +62,7 @@
 .taskText {
   width: 632px;
   height: 40px;
-  margin-top: -0.01rem;
+  margin-top: 1.7px;
   align-items: start;
   font-style: normal;
   font-weight: 400;
@@ -76,19 +76,22 @@
 .taskTextLined {
   width: 632px;
   height: 40px;
-  margin-top: -0.01rem;
+  margin-top: 1.7px;
   align-items: start;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
-  text-transform: lowercase;
 
   color: var(--gray-300);
   text-decoration: line-through;
 }
 
 .taskText:first-letter {
+  text-transform: uppercase;
+}
+
+.taskTextLined:first-letter {
   text-transform: uppercase;
 }
 

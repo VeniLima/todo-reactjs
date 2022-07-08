@@ -57,6 +57,8 @@
   flex: none;
   order: 1;
   flex-grow: 0;
+
+  cursor: pointer;
 }
 
 .form button:hover {
@@ -66,7 +68,6 @@
 .container {
   display: flex;
   flex-direction: column;
-
   padding: 0px;
   gap: 24px;
 
@@ -107,7 +108,7 @@
   line-height: 17px;
   /* identical to box height */
   /* Purple */
-
+  margin-right: 3rem;
   color: #8284fa;
 
   /* Inside auto layout */
@@ -118,24 +119,25 @@
   flex-direction: row;
   justify-content: space-between;
   white-space: nowrap;
+  border-bottom: 2px solid var(--gray-400);
+  padding-bottom: 2rem;
 }
 
 .count {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2px 8px;
+  padding: 2px 10px;
   margin-left: 10px;
 
+  margin-top: -0.2rem;
   width: 25px;
   height: 19px;
 
-  /* Gray 400 */
-
+  font-size: 12px;
+  color: var(--gray-200);
   background: #333333;
   border-radius: 999px;
-
-  /* Inside auto layout */
 }
 
 .box {

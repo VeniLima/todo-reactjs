@@ -10,6 +10,9 @@ function App() {
   const [newTask, setNewTask] = useState<string[]>([]);
   const [newCommentText, setNewCommentText] = useState<string>("");
 
+  const [checkedTasks, setCheckedTasks] = useState(false);
+
+  let checkedBoxes = document.querySelectorAll("input[type=checkbox]:checked");
   function handleNewTask(event: any) {
     event.preventDefault();
 
@@ -28,10 +31,6 @@ function App() {
     setNewTask(tasksWithoutDeletedOne);
   }
 
-  let checkedBoxes = document.querySelectorAll("input[type=checkbox]:checked");
-
-  const [checkedTasks, setCheckedTasks] = useState(false);
-
   function onChangeBox() {
     setCheckedTasks(!checkedTasks);
   }
@@ -48,7 +47,7 @@ function App() {
               onChange={handleNewCommentChange}
             />
             <button type="submit" disabled={newCommentText.length == 0}>
-              Criar <PlusCircle />
+              Criar <PlusCircle size={16} />
             </button>
           </form>
         </div>
@@ -59,10 +58,8 @@ function App() {
               <span className={styles.count}>{newTask.length}</span>
             </span>
             <span className={styles.concludedTask}>
-              Concluidas
-              <span className={styles.count}>
-                {checkedBoxes.length} de {newTask.length}
-              </span>
+              Concluídas
+              <span className={styles.count}>{newTask.length}</span>
             </span>
           </div>
 
@@ -105,7 +102,7 @@ function App() {
           </span>
         </div>
 
-        <div className={styles.box}>
+        <div>
           {newTask.map((task) => {
             return (
               <Task
