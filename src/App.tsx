@@ -12,6 +12,12 @@ function App() {
 
   const [checkedTasks, setCheckedTasks] = useState(false);
 
+  const [taskDoneCount, setTaskDoneCount] = useState(
+    document.querySelectorAll('input[type="checkbox"]:checked').length
+  );
+
+  //let box = document.querySelector("input[type=checkbox]");
+
   let [checkedBoxes, setCheckedBoxes] = useState(
     document.querySelectorAll('input[type="checkbox"]:checked').length
   );
@@ -28,34 +34,27 @@ function App() {
     setNewCommentText(event?.target.value);
   }
 
-  function deleteTask(taskToDelete: string) {
+  function deleteTask(taskToDelete: string, value: number) {
     const tasksWithoutDeletedOne = newTask.filter((tasks) => {
       return tasks != taskToDelete;
     });
-    let taskDoneCount = document.querySelectorAll(
+
+    /*let value = document.querySelectorAll(
       'input[type="checkbox"]:checked'
     ).length;
+    */
 
-    let box = document.querySelector("input[type=checkbox]");
-    if (box.checked) {
-      setCheckedBoxes(taskDoneCount - 1);
-    } else {
-      setCheckedBoxes(taskDoneCount);
-    }
-
+    setTaskDoneCount(value);
+    console.log("app " + value);
     setNewTask(tasksWithoutDeletedOne);
-
-    console.log(checkedBoxes);
   }
 
   function onChangeBox() {
-    setCheckedTasks(!checkedTasks);
-    let taskDoneCount = document.querySelectorAll(
+    let value = document.querySelectorAll(
       'input[type="checkbox"]:checked'
     ).length;
 
-    setCheckedBoxes(taskDoneCount);
-    console.log(checkedBoxes);
+    setTaskDoneCount(value);
   }
 
   if (newTask.length == 0) {
@@ -120,7 +119,7 @@ function App() {
           <span className={styles.concludedTask}>
             Concluidas
             <span className={styles.count}>
-              {checkedBoxes} de {newTask.length}
+              {taskDoneCount} de {newTask.length}
             </span>
           </span>
         </div>
