@@ -1,4 +1,4 @@
-import { ArrowsInSimple, Trash } from "phosphor-react";
+import { ArrowsInSimple, BellSimpleZ, Trash } from "phosphor-react";
 import { useState } from "react";
 import styles from "../styles/Task.module.css";
 
@@ -10,20 +10,7 @@ interface TaskProps {
 
 export function Task(props: TaskProps) {
   const [checked, setChecked] = useState(false);
-  /*const [arr, setArr] = useState<string[]>([]);
 
- let situation = event.target.checked;
-    let updatedList: string[] = [...arr];
-    if (situation) {
-      updatedList = [...updatedList, event.target.value];
-    } else {
-      updatedList.pop();
-    }
-    console.log(updatedList);
-    setArr(updatedList);
-
-
-  */
   function handleDeleteTask(event: any) {
     props.onDeleteTask(props.content);
   }
