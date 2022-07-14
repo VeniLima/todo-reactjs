@@ -13,6 +13,8 @@ export function Task(props: TaskProps) {
 
   function handleDeleteTask(event: any) {
     props.onDeleteTask(props.content);
+    let box = document.querySelector("input[type=checkbox]");
+    console.log(box.checked);
   }
 
   function handleCheckboxChange(event: any) {

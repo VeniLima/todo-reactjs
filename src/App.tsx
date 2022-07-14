@@ -1,7 +1,7 @@
 import "./styles/global.css";
 import styles from "./styles/App.module.css";
 import { Header } from "./components/Header";
-import { ClipboardText, PlusCircle } from "phosphor-react";
+import { ClipboardText, PlusCircle, ThermometerSimple } from "phosphor-react";
 
 import { useState } from "react";
 import { Task } from "./components/Task";
@@ -32,11 +32,17 @@ function App() {
     const tasksWithoutDeletedOne = newTask.filter((tasks) => {
       return tasks != taskToDelete;
     });
-    const taskDoneCount = document.querySelectorAll(
+    let taskDoneCount = document.querySelectorAll(
       'input[type="checkbox"]:checked'
     ).length;
 
-    setCheckedBoxes(taskDoneCount - 1);
+    let box = document.querySelector("input[type=checkbox]");
+    if (box.checked) {
+      setCheckedBoxes(taskDoneCount - 1);
+    } else {
+      setCheckedBoxes(taskDoneCount);
+    }
+
     setNewTask(tasksWithoutDeletedOne);
 
     console.log(checkedBoxes);
@@ -44,9 +50,11 @@ function App() {
 
   function onChangeBox() {
     setCheckedTasks(!checkedTasks);
-    setCheckedBoxes(
-      document.querySelectorAll('input[type="checkbox"]:checked').length
-    );
+    let taskDoneCount = document.querySelectorAll(
+      'input[type="checkbox"]:checked'
+    ).length;
+
+    setCheckedBoxes(taskDoneCount);
     console.log(checkedBoxes);
   }
 
