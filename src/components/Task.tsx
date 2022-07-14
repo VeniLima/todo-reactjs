@@ -17,13 +17,15 @@ export function Task(props: TaskProps) {
     document.querySelectorAll('input[type="checkbox"]:checked').length
   );
 */
-  const ref = useRef(null);
+  const ref = useRef<any>(null);
 
   function handleDeleteTask(event: any) {
     let value = document.querySelectorAll(
       'input[type="checkbox"]:checked'
     ).length;
-    if (ref.current.checked) {
+    if (ref.current == null) {
+      return;
+    } else if (ref.current.checked) {
       console.log("✅ Checkbox is checked");
       value -= 1;
       props.onDeleteTask(props.content, value);
