@@ -10,15 +10,7 @@ function App() {
   const [newTask, setNewTask] = useState<string[]>([]);
   const [newCommentText, setNewCommentText] = useState<string>("");
 
-  const [checkedTasks, setCheckedTasks] = useState(false);
-
   const [taskDoneCount, setTaskDoneCount] = useState(
-    document.querySelectorAll('input[type="checkbox"]:checked').length
-  );
-
-  //let box = document.querySelector("input[type=checkbox]");
-
-  let [checkedBoxes, setCheckedBoxes] = useState(
     document.querySelectorAll('input[type="checkbox"]:checked').length
   );
 
@@ -39,13 +31,8 @@ function App() {
       return tasks != taskToDelete;
     });
 
-    /*let value = document.querySelectorAll(
-      'input[type="checkbox"]:checked'
-    ).length;
-    */
-
     setTaskDoneCount(value);
-    console.log("app " + value);
+
     setNewTask(tasksWithoutDeletedOne);
   }
 

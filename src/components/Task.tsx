@@ -1,4 +1,4 @@
-import { ArrowsInSimple, BellSimpleZ, Trash } from "phosphor-react";
+import { Trash } from "phosphor-react";
 import { useState } from "react";
 import styles from "../styles/Task.module.css";
 
@@ -13,10 +13,6 @@ interface TaskProps {
 export function Task(props: TaskProps) {
   const [checked, setChecked] = useState(false);
 
-  /*const [taskDoneCount, setTaskDoneCount] = useState(
-    document.querySelectorAll('input[type="checkbox"]:checked').length
-  );
-*/
   const ref = useRef<any>(null);
 
   function handleDeleteTask(event: any) {
@@ -26,32 +22,19 @@ export function Task(props: TaskProps) {
     if (ref.current == null) {
       return;
     } else if (ref.current.checked) {
-      console.log("✅ Checkbox is checked");
+      //console.log("✅ Checkbox is checked");
       value -= 1;
       props.onDeleteTask(props.content, value);
     } else {
-      console.log("⛔️ Checkbox is NOT checked");
+      //console.log("⛔️ Checkbox is NOT checked");
       props.onDeleteTask(props.content, value);
     }
-
-    //console.log(value);
-    //props.onDeleteTask(props.content, );
-
-    //let box = document.querySelector("input[type=checkbox]");
   }
 
   function handleCheckboxChange(event: any) {
     setChecked(!checked);
-    //console.log("checked: " + checked);
-
-    if (ref.current.checked) {
-      console.log("✅ Checkbox is checked");
-    } else {
-      console.log("⛔️ Checkbox is NOT checked");
-    }
 
     props.onCheckboxChange();
-    console.log(event.target.checked);
   }
 
   return (
